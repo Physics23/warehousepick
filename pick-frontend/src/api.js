@@ -4,10 +4,14 @@ import axios from 'axios';
 //const STATION_ID = 'ToteASRS4159';
 
 //const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
-const STATION_ID = 'PickstationASRS4159';
+
+// Use the same origin as the frontend (proxied to the backend via Render rewrite)
+const API_BASE_URL = '/api';
+const STATION_ID = 'ToteASRS415';
 
 axios.defaults.withCredentials = true;
+
+// ... rest of your functions unchanged
 
 export const login = async (username, password) => {
   const response = await axios.post(`${API_BASE_URL}/auth/login/`, { username, password });
