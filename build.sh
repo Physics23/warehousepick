@@ -20,9 +20,9 @@ print('Admin user alaye ready')
 # Create the station and totes (idempotent)
 python manage.py shell -c "
 from picks.models import Station, Tote
-s, c1 = Station.objects.get_or_create(station_id='PickstationASRS4159', defaults={'name': 'Pick Station'})
+s, c1 = Station.objects.get_or_create(station_id='ToteASRS4159', defaults={'name': 'Pick Station'})
 t1, c2 = Tote.objects.get_or_create(tote_id='BIN-01')
 t2, c3 = Tote.objects.get_or_create(tote_id='TOTE-42')
-print(f'Station PickstationASRS4159: {\"created\" if c1 else \"exists\"}')
+print(f'Station ToteASRS4159: {\"created\" if c1 else \"exists\"}')
 print(f'Totes BIN-01/TOTE-42: {\"created\" if c2 else \"exists\"}/{\"created\" if c3 else \"exists\"}')
 "
