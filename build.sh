@@ -5,12 +5,13 @@ pip install -r requirements.txt
 python manage.py collectstatic --no-input
 python manage.py migrate
 
-# Create the admin user if it doesn't exist
+# Always create or reset the admin user (idempotent, safe to run every deploy)
 python manage.py shell -c "
 from django.contrib.auth.models import User
-if not User.objects.filter(username='alaye').exists():
-    User.objects.create_superuser('alaye', '', '123')
-    print('Created admin user: alaye')
-else:
-    print('Admin user alaye already exists')
+user, created = User.objects.get_or_create(username='alaye')
+user.set_password('123')
+user.is_staff = True
+user.is_superuser = True
+user.save()
+print('Admin user alaye: password set to 123 (created=' + str(created) + ')')
 "
