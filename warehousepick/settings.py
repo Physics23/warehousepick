@@ -102,10 +102,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://warehousepick-1.onrender.com"
+    "https://warehousepick-1.onrender.com",   # Your actual frontend URL
 ]
 CORS_ALLOW_CREDENTIALS = True
 
+# Required for cross-domain cookies between different Render subdomains
 CSRF_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
@@ -113,6 +114,8 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_HTTPONLY = True
 
+# Trust Render's HTTPS proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 from rest_framework.authentication import SessionAuthentication
