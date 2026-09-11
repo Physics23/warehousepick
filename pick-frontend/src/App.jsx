@@ -115,7 +115,7 @@ function App() {
 
   return (
     <div className="kiosk">
-      <Header stationId = "PickstationASRS4159" operatorName ={stats?.opearor_name} stats ={stats}/>
+      <Header stationId = "ToteASRS4159" operatorName ={stats?.opearor_name} stats ={stats}/>
       <div className="demo-toggle">
         <label>
           <input 
